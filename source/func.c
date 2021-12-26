@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "../header/func.h"
 
 
 void swap(int *a, int *b) {
@@ -12,7 +13,7 @@ void swap(int *a, int *b) {
     *b = tmp;
 }
 
-int test_sort_() {
+int test_sort() {
     int a[][6] = {
             {1, 4, 3, 1, 3, 2},
             {3, 2, 1, 3, 2, 4},
@@ -109,3 +110,28 @@ void quick_sort(int data[], int length) {
 }
 
 
+
+void test_sort_() {
+    int a[] = {1, 2, 3, 3, 2, 1, -1};
+    int length = sizeof(a) / sizeof(int);
+
+//    insert_sort(a, length);
+//    bubble_sort(a, length);
+    quick_sort(a, length);
+
+    for (int i = 0; i < 6; ++i) {
+        printf("%d ", a[i]);
+    }
+
+}
+
+
+void test_func(){
+    VOID p = NULL;
+    p = test_sort_;
+    for (int i = 0; i < 10; ++i) {
+//        FUNC c = (FUNC) p;
+//        c();
+        ((FUNC) p)();
+    }
+}

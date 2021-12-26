@@ -25,3 +25,7 @@ Stack *initStack(int max_size);
 void pushStack(Stack *s, void *value);
 
 void *popStack(Stack *s);
+
+void clearStack(Stack *s);
+
+void test_stack();

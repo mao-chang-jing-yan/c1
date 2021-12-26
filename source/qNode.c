@@ -3,6 +3,7 @@
 //
 
 #include "../header/qNode.h"
+#include <stdio.h>
 
 Que *initQueue(int max_size) {
     Que *q = (Que *) malloc(sizeof(Que));
@@ -15,14 +16,14 @@ Que *initQueue(int max_size) {
     return q;
 }
 
-void pushBack(Que * q, void * value) {
+void pushBack(Que *q, void *value) {
     QNode *sq = (QNode *) malloc(sizeof(QNode));
     if (sq == NULL || q->size >= q->max_size) {
-        if (sq!=NULL){free(sq);}
+        if (sq != NULL) { free(sq); }
         return;
     }
     sq->value = value;
-    if (q->front == q->back && q->back==NULL){
+    if (q->front == q->back && q->back == NULL) {
         q->front = q->back = sq;
         q->size += 1;
         return;
@@ -33,14 +34,14 @@ void pushBack(Que * q, void * value) {
     q->size += 1;
 }
 
-void pushFront(Que * q, void * value) {
+void pushFront(Que *q, void *value) {
     QNode *sq = (QNode *) malloc(sizeof(QNode));
     if (sq == NULL || q->size >= q->max_size) {
-        if (sq!=NULL){free(sq);}
+        if (sq != NULL) { free(sq); }
         return;
     }
     sq->value = value;
-    if (q->front == q->back && q->front == NULL){
+    if (q->front == q->back && q->front == NULL) {
         q->front = q->back = sq;
         q->size += 1;
         return;
@@ -51,30 +52,30 @@ void pushFront(Que * q, void * value) {
     q->size += 1;
 }
 
-void *popBack(Que * q) {
-    if ((q->front == q->back && q->back == NULL) || q->size <=0){
+void *popBack(Que *q) {
+    if ((q->front == q->back && q->back == NULL) || q->size <= 0) {
         return NULL;
     }
-    if (q->front == q->back){
-        void * res = q->back->value;
+    if (q->front == q->back) {
+        void *res = q->back->value;
         free(q->back);
         q->front = q->back = NULL;
         q->size -= 1;
         return res;
     }
-    void * res = q->back->value;
+    void *res = q->back->value;
     q->back = q->back->front;
     free(q->back->back);
     q->size -= 1;
     return res;
 }
 
-void *popFront(Que * q) {
-    if ((q->front == q->back && q->back == NULL) || q->size <=0){
+void *popFront(Que *q) {
+    if ((q->front == q->back && q->back == NULL) || q->size <= 0) {
         return NULL;
     }
-    if (q->front == q->back){
-        void * res = q->back->value;
+    if (q->front == q->back) {
+        void *res = q->back->value;
         free(q->back);
         q->front = q->back = NULL;
         q->size -= 1;
@@ -87,8 +88,34 @@ void *popFront(Que * q) {
     return res;
 }
 
-void clear(Que * q){
-    while (q->size > 0){
+void clear_q(Que *q) {
+    while (q->size > 0) {
         popBack(q);
     }
+}
+
+void test_q() {
+    int num = 209;
+    int *l = malloc(sizeof(int) * num);
+    int *li = l;
+    Que *q = initQueue(num);
+    void *d;
+
+
+    for (int i = 0; i < num; ++i) {
+        l[i] = i;
+        pushBack(q, li);
+        li++;
+    }
+    for (int i = 0; i < num; ++i) {
+        d = popFront(q);
+        printf("%d\n", *(int *) d);
+        d = popBack(q);
+        printf("%d\n", *(int *) d);
+    }
+
+
+    clear_q(q);
+    free(q);
+    free(l);
 }

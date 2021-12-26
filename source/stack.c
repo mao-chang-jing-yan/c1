@@ -29,7 +29,7 @@ void pushStack(Stack *s, void *value) {
 }
 
 void *popStack(Stack *s) {
-    if (s->size <=0 || s->top == 0){
+    if (s->size <= 0 || s->top == 0) {
         return 0;
     }
     void *res = s->top->value;
@@ -38,4 +38,24 @@ void *popStack(Stack *s) {
     free(t);
     s->size--;
     return res;
+}
+
+void clearStack(Stack *s) {
+    while (s->size > 0) {
+        popStack(s);
+    }
+}
+
+
+void test_stack() {
+    Stack *s = initStack(100);
+    int a = 100;
+    void *b = &a;
+    pushStack(s, b);
+    pushStack(s, b);
+    popStack(s);
+    popStack(s);
+    popStack(s);
+    clearStack(s);
+    free(s);
 }

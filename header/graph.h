@@ -10,3 +10,4 @@
 void bellman_ford(const int *edges, int length, int p, int t);
 void floyd(const int *edges, int length, int p, int t);
 void SpFa(const int *edges, int length, int p, int t);
+void test_graph();
