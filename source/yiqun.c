@@ -100,7 +100,7 @@ double get_dist(int from, int to) {
 }
 
 
-void main_yi() {
+void test_yiqun() {
     init_data();
 //    print_cities();
     for (int i = 0; i < SIZE; ++i) {

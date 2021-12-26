@@ -23,8 +23,11 @@ int get_node_num(const int *edges, int length) {
 
 void bellman_ford(const int *edges, int length, int p, int t) {
     int node_num = get_node_num(edges, length);
-    int path[12];
-    int dist[12];
+    int *dist = (int *) malloc(sizeof(int) * node_num);
+    int *path = (int *) malloc(sizeof(int) * node_num);
+
+//    int path[12];
+//    int dist[12];
     for (int l = 0; l < 12; ++l) {
         dist[l] = MAX_NUM;
         path[l] = -1;
@@ -64,6 +67,10 @@ void bellman_ford(const int *edges, int length, int p, int t) {
     for (int j = 0; j < 12; ++j) {
         printf("%d ", path[j]);
     }
+
+
+    free(dist);
+    free(path);
 
 
 }
@@ -187,4 +194,30 @@ void SpFa(const int *edges, int length, int p, int t) {
     free(flag);
     free(dist);
     free(path);
+}
+
+
+
+
+void test_graph() {
+    int a[][3] = {
+            {0, 1, 5},
+            {1, 6, 60},
+            {1, 5, 30},
+            {1, 2, 20},
+            {2, 3, 10},
+            {3, 2, -15},
+            {2, 4, 75},
+            {4, 9, 100},
+            {5, 4, 25},
+            {5, 6, 5},
+            {5, 8, 50},
+            {6, 7, -50},
+            {7, 8, -10},
+    };
+
+
+    bellman_ford((int *) a, sizeof(a) / sizeof(0) / 3, 0, 3);
+    floyd((int *) a, sizeof(a) / sizeof(0) / 3, 0, 3);
+    SpFa((int *) a, sizeof(a) / sizeof(0) / 3, 0, 3);
 }

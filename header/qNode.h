@@ -30,3 +30,5 @@ void pushFront(Que * q, void * value);
 void *popBack(Que * q);
 void *popFront(Que * q);
 void clear(Que * q);
+
+void test_q();

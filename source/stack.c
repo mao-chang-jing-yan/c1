@@ -39,3 +39,16 @@ void *popStack(Stack *s) {
     s->size--;
     return res;
 }
+
+
+void test_stack() {
+    Stack *s = initStack(100);
+    int a = 100;
+    void *b = &a;
+    pushStack(s, b);
+    pushStack(s, b);
+    popStack(s);
+    popStack(s);
+    popStack(s);
+    free(s);
+}

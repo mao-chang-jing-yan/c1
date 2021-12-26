@@ -7,8 +7,13 @@
 
 #endif //C1_FUNC_H
 
+typedef void *VOID;
+typedef void (*FUNC)();
+
 void swap(int *a, int *b);
 void bubble_sort(int data[], int length);
 void insert_sort(int data[], int length);
 void quick_sort(int data[], int length);
-int test_sort_();
+int test_sort();
+
+void test_func();

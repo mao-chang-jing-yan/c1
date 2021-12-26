@@ -9,4 +9,4 @@
 #endif //C1_YIQUN_H
 
 
-void main_yi();
+void test_yiqun();

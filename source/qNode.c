@@ -3,6 +3,7 @@
 //
 
 #include "../header/qNode.h"
+#include <stdio.h>
 
 Que *initQueue(int max_size) {
     Que *q = (Que *) malloc(sizeof(Que));
@@ -91,4 +92,22 @@ void clear(Que * q){
     while (q->size > 0){
         popBack(q);
     }
+}
+
+void test_q() {
+    Que *q = initQueue(100);
+    void *d = (void *) 789;
+    for (int i = 0; i < 100; ++i) {
+        int c = 789;
+        void *f = &c;
+        pushBack(q, f);
+    }
+    pushBack(q, d);
+    d = popBack(q);
+    printf("%d\n", *(int *) d);
+    d = popBack(q);
+    printf("%d\n", *(int *) d);
+
+    clear(q);
+    free(q);
 }
