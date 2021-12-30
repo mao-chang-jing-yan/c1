@@ -1,49 +1,21 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include "header/func.h"
-#include "header/graph.h"
-#include "header/qNode.h"
-#include "header/stack.h"
-#include "header/yiqun.h"
-#include "header/window.h"
-#include "header/file.h"
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>    //strlen
+#include<sys/socket.h>
+#include<arpa/inet.h> //inet_addr
+#include<netdb.h>
+#include<errno.h>
+#include<spdlog/spdlog>
 
-
-int main(int argc, char *argv[]) {
-    while (argc-- > 1)
-        printf("%s\n", *++argv);
-//    test_q();
-//    test_graph();
-//    test_stack();
-//    test_sort();
-//    printf("%d %s", argc, *argv);
-
-//    int a = test_sort_();
-//    printf("%d", a);
-
-//    printf("%o \n", 0b1);
-//    printf("%d \n", 0b10);
-//    printf("%d \n", 0b101);
-//    printf("%d \n", 0b1010);
-//    printf("%d \n", 0b10101);
-//    printf("%d \n", 0b101010);
-//    printf("%d \n", 0b10101010);
-
-    test_yiqun();
-//    test_func();
-//    test_graph();
-//    file_test();
-
+int main(int argc, char *argv[])
+{
+//    YAML::Node config = YAML::LoadFile("account.yaml");
+//    string username, password;
+//    auto account = config["account"];
+//    username = account["username"].as<string>();
+//    password = account["password"].as<string>();
+//    cout << "username:" << username << endl;
+//    cout << "password:" << password << endl;
 
     return 0;
 }
-
-
-
-
-
-
-
-
-

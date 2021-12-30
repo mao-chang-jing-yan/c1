@@ -95,7 +95,7 @@ void clear_q(Que *q) {
 }
 
 void test_q() {
-    int num = 209;
+    int num = 7129;
     int *l = malloc(sizeof(int) * num);
     int *li = l;
     Que *q = initQueue(num);
@@ -111,6 +111,9 @@ void test_q() {
         d = popFront(q);
         printf("%d\n", *(int *) d);
         d = popBack(q);
+        if (d == NULL){
+            break;
+        }
         printf("%d\n", *(int *) d);
     }
 
