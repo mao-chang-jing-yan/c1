@@ -94,6 +94,35 @@ void clear_q(Que *q) {
     }
 }
 
+void insert_q(Que *q, int index, void *value) {
+    if (q->size >= q->max_size){
+        return;
+    }
+    if (q->size <= index) {
+        pushBack(q, value);
+        return;
+    }
+    if (index <= 0) {
+        pushFront(q, value);
+        return;
+    }
+    QNode *p = q->front;
+    for (int i = 0; i < index; ++i) {
+        p = p->back;
+    }
+
+    QNode *fr = p->front;
+    QNode *ba = p;
+    QNode *mi = (QNode *) malloc(sizeof(QNode));
+    fr->back = mi;
+    ba->front = mi;
+    mi->front = fr;
+    mi->back = ba;
+    mi->value = value;
+    q->size++;
+}
+
+
 void test_q() {
     int num = 7129;
     int *l = malloc(sizeof(int) * num);
@@ -111,7 +140,7 @@ void test_q() {
         d = popFront(q);
         printf("%d\n", *(int *) d);
         d = popBack(q);
-        if (d == NULL){
+        if (d == NULL) {
             break;
         }
         printf("%d\n", *(int *) d);
@@ -121,4 +150,26 @@ void test_q() {
     clear_q(q);
     free(q);
     free(l);
+
+
+
+//    Que *q1 = initQueue(3);
+//    int a = 12;
+//    int b = 13;
+//    int c = 14;
+//    int d = 15;
+//    pushBack(q1, &a);
+//    pushBack(q1, &c);
+//    pushBack(q1, &d);
+//    insert_q(q1, 1, &b);
+//
+//
+//    int si = q1->size;
+//    while (q1->size>0){
+//        printf("%d, ", *(int *) popFront(q1));
+//    }
+//    printf("\n%d", si);
+//
+//    clear_q(q1);
+//    free(q1);
 }
